@@ -1,40 +1,23 @@
-const Web3 = require('web3');
-const klaytnProvider = new Web3.providers.HttpProvider('https://api.klaytn.com');
-const web3 = new Web3(klaytnProvider);
+// Import the Klaytn SDK.
+const klaytn = require("@klaytn/sdk");
 
-function getAddress() {
-  const ethereumAddress = window.ethereum.accounts[0];
-  return ethereumAddress;
-}
+// Get the recipient address from the form.
+const address = document.querySelector("input[name=address]").value;
 
-function getBalance() {
-  const balance = web3.fromWei(web3.eth.getBalance(getAddress()), 'klay');
-  return balance;
-}
+// Get the amount from the form.
+const amount = document.querySelector("input[name=amount]").value;
 
-function transfer(toAddress, amount) {
-  const transaction = web3.eth.sendTransaction({
-    from: getAddress(),
-    to: toAddress,
-    value: amount,
-  });
+// Connect to the Klaytn network.
+const client = klaytn.createClient();
 
-  transaction.on('transactionHash', (hash) => {
-    console.log('Transaction hash:', hash);
-  });
-
-  transaction.on('receipt', (receipt) => {
-    console.log('Transaction receipt:', receipt);
-  });
-
-  transaction.send();
-}
-
-$(function() {
-  $('#transfer').on('click', function() {
-    const toAddress = $('#toAddress').val();
-    const amount = 100;
-
-    transfer(toAddress, amount);
-  });
+// Send the Klaytn tokens.
+client.sendTransaction({
+  to: address,
+  value: amount,
+}, (err, txHash) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log("Transaction hash:", txHash);
+  }
 });
