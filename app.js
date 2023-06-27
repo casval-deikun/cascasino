@@ -1,23 +1,15 @@
-// Import the Klaytn SDK.
-const klaytn = require("@klaytn/sdk");
-
-// Get the recipient address from the form.
-const address = document.querySelector("input[name=address]").value;
-
-// Get the amount from the form.
-const amount = document.querySelector("input[name=amount]").value;
-
-// Connect to the Klaytn network.
-const client = klaytn.createClient();
-
-// Send the Klaytn tokens.
-client.sendTransaction({
-  to: address,
-  value: amount,
-}, (err, txHash) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("Transaction hash:", txHash);
-  }
-});
+<!DOCTYPE html>
+<html>
+<head>
+<title>Klaytn Transfer Service</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Klaytn Transfer Service</h1>
+<form action="index.js" method="post">
+<input type="text" name="address" placeholder="Recipient Address">
+<input type="number" name="amount" placeholder="Amount">
+<input type="submit" value="Send">
+</form>
+</body>
+</html>
