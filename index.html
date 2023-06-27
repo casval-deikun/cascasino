@@ -1,37 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Klaytn Wallet Integration</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      text-align: center;
-    }
-
-    .button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: #fff;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+<title>Clay Transfer Service</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Klaytn Wallet Integration</h1>
-    <button class="button" onclick="connectWallet()">Connect Wallet</button>
-    <button class="button" onclick="sendKlay()">Send 100 Klay</button>
-  </div>
-
-  <script src="index.js"></script>
+<h1>Clay Transfer Service</h1>
+<form action="app.js" method="post">
+<input type="text" name="toAddress" placeholder="To Address">
+<input type="submit" value="Transfer">
+</form>
 </body>
 </html>
