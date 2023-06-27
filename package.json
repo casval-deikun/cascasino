@@ -1,7 +1,0 @@
-{
-  "name": "klaytn-transfer-service",
-  "version": "1.0.0",
-  "dependencies": {
-    "@klaytn/sdk": "^1.0.0"
-  }
-}
